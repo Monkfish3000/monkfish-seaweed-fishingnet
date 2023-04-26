@@ -1,5 +1,6 @@
 import './App.css';
-import ScoreAndResults from './components/ScoreAndResults';
+import ScoreAndResults from './sections/ScoreAndResults';
+import ChooseAndPlay from './sections/ChooseAndPlay';
 import styles from './App.module.css';
 
 function App() {
@@ -9,10 +10,8 @@ function App() {
         <h1>MONKFISH, SEAWEED, FISHING NET</h1>
         <p>A completely original game!</p>
       </div>
-      {
-        <ScoreAndResults />
-        /* <ChooseAndPlay />  */
-      }
+      <ScoreAndResults />
+      <ChooseAndPlay />
     </div>
   );
 }

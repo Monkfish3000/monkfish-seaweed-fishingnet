@@ -1,0 +1,13 @@
+.choiceBtnCtn {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.playBtn {
+  color: #fff;
+  background-color: #181848;
+  padding: 10px 30px;
+  margin-top: 50px;
+  font-weight: bold;
+}
