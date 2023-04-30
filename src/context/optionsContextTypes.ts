@@ -12,3 +12,7 @@ export interface IOptions {
 export interface IoptionsContext {
   options: IOptions[];
 }
+
+export interface Props {
+  children: React.ReactNode;
+}
