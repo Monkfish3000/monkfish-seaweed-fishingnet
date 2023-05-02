@@ -1,13 +1,14 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useReducer } from 'react';
 import {
   IOptions,
   IoptionsContext,
   SeaItemOption,
   Props,
 } from './optionsContextTypes';
-import SeaItem from '../components/SeaItem';
+import { initialState } from './initialContextValues';
 
 import { GiFishMonster, GiFishingNet, GiPlantRoots } from 'react-icons/gi';
+import scoreReducer from '../reducers/scoreReducer';
 
 const options: IOptions[] = [
   { name: SeaItemOption.monkfish, icon: <GiFishMonster size={60} /> },
@@ -17,11 +18,17 @@ const options: IOptions[] = [
 
 const OptionsContext = createContext<IoptionsContext>({
   options: [],
+  state: initialState,
+  dispatch: () => {},
 });
 
 export function OptionsProvider(props: Props) {
+  const [state, dispatch] = useReducer(scoreReducer, initialState);
+
   const contextValue = {
     options,
+    state,
+    dispatch,
   };
 
   return (
