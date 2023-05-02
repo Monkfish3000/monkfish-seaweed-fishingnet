@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useContext } from 'react';
 import {
   IOptions,
   IoptionsContext,
@@ -29,4 +29,9 @@ export function OptionsProvider(props: Props) {
       {props.children}
     </OptionsContext.Provider>
   );
+}
+
+export function useOptions() {
+  const context = useContext(OptionsContext);
+  return context;
 }

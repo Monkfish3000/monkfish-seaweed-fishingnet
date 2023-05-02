@@ -1,17 +1,18 @@
 import React from 'react';
 import styles from './ChooseAndPlay.module.css';
 import SeaItem from '../components/SeaItem';
-
-import { GiFishMonster, GiFishingNet, GiPlantRoots } from 'react-icons/gi';
+import { useOptions } from '../context/optionsContext';
 
 const ChooseAndPlay = () => {
+  const optionsContext = useOptions();
+
+  const SeaItemsArray = optionsContext.options.map((item) => {
+    return <SeaItem name={item.name} icon={item.icon} />;
+  });
+
   return (
     <>
-      <div className={styles.choiceBtnCtn}>
-        <SeaItem name="monkfish" icon={<GiFishMonster size={60} />} />
-        <SeaItem name="seaweed" icon={<GiPlantRoots size={60} />} />
-        <SeaItem name="fishingnet" icon={<GiFishingNet size={60} />} />
-      </div>
+      <div className={styles.choiceBtnCtn}>{SeaItemsArray}</div>
       <button className={styles.playBtn}>Play</button>
     </>
   );
