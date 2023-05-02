@@ -6,9 +6,13 @@ import { useOptions } from '../context/optionsContext';
 const ChooseAndPlay = () => {
   const optionsContext = useOptions();
 
-  const SeaItemsArray = optionsContext.options.map((item) => {
-    return <SeaItem name={item.name} icon={item.icon} />;
+  const SeaItemsArray = optionsContext.options.map((item, idx) => {
+    return (
+      <SeaItem name={item.name} icon={item.icon} seaItemChoiceIndex={idx} />
+    );
   });
+
+  console.log(optionsContext.state);
 
   return (
     <>
