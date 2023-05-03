@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './SeaItem.module.css';
+import { OptionActionKind } from '../reducers/scoreReducerTypes';
+import { useOptions } from '../context/optionsContext';
 
 interface Props {
   name: string;
@@ -8,8 +10,12 @@ interface Props {
 }
 
 const SeaItem: React.FC<Props> = ({ name, icon, seaItemChoiceIndex }) => {
+  const optionsContext = useOptions();
+
+  const { dispatch } = optionsContext;
+
   const selectOption = (index: number) => {
-    console.log(index);
+    dispatch({ type: OptionActionKind.UPDATE_PLAYER_CHOICE, payload: index });
   };
   return (
     <>
