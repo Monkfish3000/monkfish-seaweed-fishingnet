@@ -12,8 +12,6 @@ const ChooseAndPlay = () => {
     );
   });
 
-  console.log(optionsContext.state);
-
   return (
     <>
       <div className={styles.choiceBtnCtn}>{SeaItemsArray}</div>
