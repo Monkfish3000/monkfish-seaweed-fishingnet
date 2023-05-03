@@ -4,3 +4,14 @@
   align-items: center;
   border: none;
 }
+
+.activeChoice {
+  background-color: #181848;
+  color: #fff;
+  outline: none;
+}
+
+.activeChoice:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #007bff;
+}
