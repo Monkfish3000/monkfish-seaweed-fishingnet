@@ -1,4 +1,5 @@
 import { useState, ReactNode } from 'react';
+import styles from './RulesModal.module.css';
 
 interface RulesModalProps {
   isOpen: boolean;
@@ -21,9 +22,16 @@ function RulesModal({ isOpen, onClose, children }: RulesModalProps) {
   }
 
   return (
-    <div className={`rules-modal${isClosing ? ' closing' : ''}`}>
-      <div className="rules-modal-overlay" onClick={handleModalClose} />
-      <div className="rules-modal-content">{children}</div>
+    <div
+      className={`${styles['rules-modal']}${
+        isClosing ? ' ' + styles.closing : ''
+      }`}
+    >
+      <div
+        className={styles['rules-modal-overlay']}
+        onClick={handleModalClose}
+      />
+      <div className={styles['rules-modal-content']}>{children}</div>
     </div>
   );
 }
