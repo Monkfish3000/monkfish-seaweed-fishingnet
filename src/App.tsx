@@ -1,6 +1,7 @@
 import './App.css';
 import ScoreAndResults from './sections/ScoreAndResults';
 import ChooseAndPlay from './sections/ChooseAndPlay';
+import RulesModal from './components/RulesModal';
 import styles from './App.module.css';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       </div>
       <ScoreAndResults />
       <ChooseAndPlay />
+      <RulesModal isOpen={true} onClose={() => {}} children={undefined} />
     </div>
   );
 }
