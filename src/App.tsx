@@ -13,7 +13,7 @@ function App() {
       </div>
       <ScoreAndResults />
       <ChooseAndPlay />
-      <RulesModal isOpen={true} onClose={() => {}} children={undefined} />
+      <RulesModal />
     </div>
   );
 }
