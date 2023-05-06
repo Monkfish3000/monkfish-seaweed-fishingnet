@@ -41,7 +41,6 @@ function RulesModal() {
 
   function handleModalOpen() {
     setIsModalOpen(!isModalOpen);
-    console.log(isModalOpen);
   }
 
   function handleModalClose() {
@@ -49,8 +48,10 @@ function RulesModal() {
   }
 
   return (
-    <div>
-      <button onClick={handleModalOpen}>Rules</button>
+    <div style={{ display: 'inline' }}>
+      <button className={styles['close-button']} onClick={handleModalOpen}>
+        Rules
+      </button>
       <Modal isOpen={isModalOpen} onClose={handleModalClose}>
         <h2>Modal Title</h2>
         <p>This is the modal content.</p>
