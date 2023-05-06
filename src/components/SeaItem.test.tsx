@@ -6,11 +6,17 @@ import { GiPlantRoots } from 'react-icons/gi';
 describe('Sea Item', () => {
   it('should render the sea item component with the right props', () => {
     render(
-      <SeaItem name="seaitem1" icon={<GiPlantRoots />} seaItemChoiceIndex={2} />
+      <SeaItem
+        name="seaweed"
+        icon={<GiPlantRoots data-testid="seaweed" />}
+        seaItemChoiceIndex={2}
+      />
     );
 
-    const seaitem = screen.getByText(/seaitem1/i);
+    const seaitem = screen.getByText(/seaweed/i);
+    const icon = screen.getByTestId('seaweed');
 
     expect(seaitem).toBeInTheDocument();
+    expect(icon).toBeVisible();
   });
 });
