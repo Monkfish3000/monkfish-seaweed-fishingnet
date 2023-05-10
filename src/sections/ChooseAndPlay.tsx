@@ -14,6 +14,7 @@ const ChooseAndPlay = () => {
 
   const play = () => {
     const randomNumber = generateComputerSeaItem();
+    console.log('the comp random number is ' + randomNumber);
   };
 
   return (
