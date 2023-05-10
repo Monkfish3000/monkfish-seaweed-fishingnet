@@ -1,7 +1,7 @@
-import React from 'react';
 import styles from './ChooseAndPlay.module.css';
 import SeaItem from '../components/SeaItem';
 import { useOptions } from '../context/optionsContext';
+import { generateComputerSeaItem } from '../utils/randomNumber';
 
 const ChooseAndPlay = () => {
   const optionsContext = useOptions();
@@ -12,10 +12,17 @@ const ChooseAndPlay = () => {
     );
   });
 
+  const play = () => {
+    const randomNumber = generateComputerSeaItem();
+    console.log('the comp random number is ' + randomNumber);
+  };
+
   return (
     <>
       <div className={styles.choiceBtnCtn}>{SeaItemsArray}</div>
-      <button className={styles.playBtn}>Play</button>
+      <button className={styles.playBtn} onClick={play}>
+        Play
+      </button>
     </>
   );
 };
