@@ -1,7 +1,7 @@
 import styles from './ChooseAndPlay.module.css';
 import SeaItem from '../components/SeaItem';
 import { useOptions } from '../context/optionsContext';
-import { randomNumber } from '../utils/randomNumber';
+import { generateComputerSeaItem } from '../utils/randomNumber';
 
 const ChooseAndPlay = () => {
   const optionsContext = useOptions();
@@ -13,7 +13,7 @@ const ChooseAndPlay = () => {
   });
 
   const play = () => {
-    const num = randomNumber();
+    const randomNumber = generateComputerSeaItem();
   };
 
   return (
