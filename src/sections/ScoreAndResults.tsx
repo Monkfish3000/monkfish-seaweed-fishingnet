@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useOptions } from '../context/optionsContext';
 import styles from './ScoreAndResults.module.css';
+import { OptionActionKind } from '../reducers/scoreReducerTypes';
 
 const ScoreAndResults = () => {
   const [time, setTime] = useState<number>(3);
 
   const optionsContext = useOptions();
   const { runTimer } = optionsContext.state;
+  const { dispatch } = optionsContext;
 
   useEffect(() => {
     if (runTimer) {
@@ -18,6 +20,13 @@ const ScoreAndResults = () => {
       }, 1000);
     }
   }, [runTimer]);
+
+  useEffect(() => {
+    if (time === 0) {
+      setTime(3);
+      dispatch({ type: OptionActionKind.RUN_TIMER, payload: false });
+    }
+  }, [time]);
 
   return (
     <>
