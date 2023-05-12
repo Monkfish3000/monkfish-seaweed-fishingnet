@@ -13,6 +13,11 @@ export default function scoreReducer(
         ...state,
         playerSeaItem: payload,
       };
+    case 'UPDATE_COMPUTER_CHOICE':
+      return {
+        ...state,
+        computerSeaItem: payload,
+      };
 
     default: {
       return {
