@@ -2,9 +2,11 @@ import styles from './ChooseAndPlay.module.css';
 import SeaItem from '../components/SeaItem';
 import { useOptions } from '../context/optionsContext';
 import { generateComputerSeaItem } from '../utils/randomNumber';
+import { OptionActionKind } from '../reducers/scoreReducerTypes';
 
 const ChooseAndPlay = () => {
   const optionsContext = useOptions();
+  const { dispatch } = optionsContext;
 
   const SeaItemsArray = optionsContext.options.map((item, idx) => {
     return (
@@ -14,7 +16,10 @@ const ChooseAndPlay = () => {
 
   const play = () => {
     const randomNumber = generateComputerSeaItem();
-    console.log('the comp random number is ' + randomNumber);
+    dispatch({
+      type: OptionActionKind.UPDATE_COMPUTER_CHOICE,
+      payload: randomNumber,
+    });
   };
 
   return (
