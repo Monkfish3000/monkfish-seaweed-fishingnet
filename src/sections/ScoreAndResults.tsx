@@ -12,6 +12,7 @@ const ScoreAndResults = () => {
     if (runTimer) {
       const newIntervalId = setInterval(() => {
         setTime((prevTime) => {
+          if (prevTime === 1) clearInterval(newIntervalId);
           return prevTime - 1;
         });
       }, 1000);
