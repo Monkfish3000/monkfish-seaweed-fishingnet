@@ -37,6 +37,7 @@ const TestingComponent = (props: Iprops) => {
   return (
     <>
       <p>playerseaitem: {state.playerSeaItem}</p>
+      <p>computerseaitem: {state.computerSeaItem}</p>
     </>
   );
 };
@@ -50,5 +51,15 @@ describe('scoreReducer', () => {
     );
 
     expect(screen.getByText(/playerseaitem: 0/)).toBeInTheDocument();
+  });
+
+  it('should update the score reducer with the correct computer sea item', () => {
+    render(
+      <TestingComponent
+        myaction={{ type: OptionActionKind.UPDATE_COMPUTER_CHOICE, payload: 1 }}
+      />
+    );
+
+    expect(screen.getByText(/computerseaitem: 1/)).toBeInTheDocument();
   });
 });
