@@ -20,6 +20,10 @@ const ChooseAndPlay = () => {
       type: OptionActionKind.UPDATE_COMPUTER_CHOICE,
       payload: randomNumber,
     });
+    dispatch({
+      type: OptionActionKind.RUN_TIMER,
+      payload: true,
+    });
   };
 
   return (
