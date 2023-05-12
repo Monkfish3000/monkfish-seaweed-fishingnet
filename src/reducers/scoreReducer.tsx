@@ -18,6 +18,11 @@ export default function scoreReducer(
         ...state,
         computerSeaItem: payload,
       };
+    case 'RUN_TIMER':
+      return {
+        ...state,
+        runTimer: payload,
+      };
 
     default: {
       return {
