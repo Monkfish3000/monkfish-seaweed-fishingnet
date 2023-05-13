@@ -43,7 +43,11 @@ const ScoreAndResults = () => {
       <div className={styles.result}>
         <div className={styles.playerHand}></div>
         <div className={styles.midCol}>
-          {runTimer && <p className={styles.timer}>{time}</p>}
+          {runTimer && (
+            <p data-testid="timer" className={styles.timer}>
+              {time}
+            </p>
+          )}
         </div>
         <div className={styles.computerHand}></div>
       </div>
