@@ -26,6 +26,30 @@ describe('Score and results', () => {
 
     screen.debug();
 
+    expect(screen.getByTestId('timer')).toHaveTextContent('2');
+  });
+
+  it('should display 1 seconds on the screen after we wait two seconds after ', () => {
+    vi.useFakeTimers();
+    render(
+      <OptionsProvider>
+        <ScoreAndResults />
+        <ChooseAndPlay />
+      </OptionsProvider>
+    );
+
+    const seaItem = screen.getByText(/seaweed/i);
+    expect(seaItem).toBeInTheDocument();
+
+    fireEvent.click(seaItem);
+    fireEvent.click(screen.getByText('Play'));
+
+    act(() => {
+      vi.advanceTimersByTime(2000);
+    });
+
+    screen.debug();
+
     expect(screen.getByTestId('timer')).toHaveTextContent('1');
   });
 });
