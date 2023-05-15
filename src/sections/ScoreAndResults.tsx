@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useOptions } from '../context/optionsContext';
 import styles from './ScoreAndResults.module.css';
 import { OptionActionKind } from '../reducers/scoreReducerTypes';
+import { checkWinner } from '../utils/checkWinner';
 
 const ScoreAndResults = () => {
   const [time, setTime] = useState<number>(3);
@@ -35,6 +36,7 @@ const ScoreAndResults = () => {
     if (time === 0) {
       setTime(3);
       dispatch({ type: OptionActionKind.RUN_TIMER, payload: false });
+      checkWinner(dispatch, playerSeaItemName, computerSeaItemName);
     }
   }, [time]);
 
