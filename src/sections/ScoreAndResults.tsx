@@ -10,6 +10,16 @@ const ScoreAndResults = () => {
   const { runTimer } = optionsContext.state;
   const { dispatch } = optionsContext;
 
+  const playerSeaItemIndex = optionsContext.state.playerSeaItem;
+  const playerSeaItemName = optionsContext.options[playerSeaItemIndex].name;
+  const playerSeaItemIcon = optionsContext.options[playerSeaItemIndex].icon;
+  const playerScore = optionsContext.state.score.playerScore;
+
+  const computerSeaItemIndex = optionsContext.state.computerSeaItem;
+  const computerSeaItemName = optionsContext.options[computerSeaItemIndex].name;
+  const computerSeaItemIcon = optionsContext.options[computerSeaItemIndex].icon;
+  const computerScore = optionsContext.state.score.computerScore;
+
   useEffect(() => {
     if (runTimer) {
       const newIntervalId = setInterval(() => {
@@ -33,11 +43,11 @@ const ScoreAndResults = () => {
       <div className={styles.scoreCtn}>
         <div className={styles.score}>
           <h3>Score</h3>
-          <p>Player</p>
+          <p>Player: {playerScore}</p>
         </div>
         <div className={styles.score}>
           <h3>Score</h3>
-          <p>Computer</p>
+          <p>Computer: {computerScore}</p>
         </div>
       </div>
       <div className={styles.result}>
