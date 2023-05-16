@@ -2,6 +2,7 @@ export enum OptionActionKind {
   UPDATE_PLAYER_CHOICE = 'UPDATE_PLAYER_CHOICE',
   UPDATE_COMPUTER_CHOICE = 'UPDATE_COMPUTER_CHOICE',
   RUN_TIMER = 'RUN_TIMER',
+  DRAW = 'DRAW',
 }
 
 interface UpdatePlayerChoice {
@@ -19,4 +20,13 @@ interface RunTimer {
   payload: boolean;
 }
 
-export type ActionTypes = UpdatePlayerChoice | UpdateComputerChoice | RunTimer;
+interface Draw {
+  type: OptionActionKind.DRAW;
+  payload: string;
+}
+
+export type ActionTypes =
+  | UpdatePlayerChoice
+  | UpdateComputerChoice
+  | RunTimer
+  | Draw;
