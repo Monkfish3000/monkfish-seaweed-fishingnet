@@ -11,6 +11,13 @@ export const checkWinner = (
 ) => {
   if (playerSeaItem === 'monkfish' && computerSeaItem === 'monkfish') {
     dispatch({ type: OptionActionKind.DRAW, payload: 'It is a draw!' });
+  } else if (playerSeaItem === 'seaweed' && computerSeaItem === 'seaweed') {
+    dispatch({ type: OptionActionKind.DRAW, payload: 'It is a draw!' });
+  } else if (
+    playerSeaItem === 'fishingnet' &&
+    computerSeaItem === 'fishingnet'
+  ) {
+    dispatch({ type: OptionActionKind.DRAW, payload: 'It is a draw!' });
   } else if (playerSeaItem === 'monkfish' && computerSeaItem === 'fishingnet') {
     dispatch({
       type: OptionActionKind.COMPUTER_WINS,
