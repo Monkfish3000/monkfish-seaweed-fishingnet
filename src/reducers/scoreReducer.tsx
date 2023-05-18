@@ -23,7 +23,38 @@ export default function scoreReducer(
         ...state,
         runTimer: payload,
       };
-
+    case OptionActionKind.DRAW:
+      return {
+        ...state,
+        results: {
+          winner: 'Nobody',
+          message: payload,
+        },
+      };
+    case OptionActionKind.PLAYER_WINS:
+      return {
+        ...state,
+        score: {
+          ...state.score,
+          playerScore: state.score.playerScore + 1,
+        },
+        results: {
+          winner: 'Player',
+          message: payload,
+        },
+      };
+    case OptionActionKind.COMPUTER_WINS:
+      return {
+        ...state,
+        score: {
+          ...state.score,
+          computerScore: state.score.computerScore + 1,
+        },
+        results: {
+          winner: 'Computer',
+          message: payload,
+        },
+      };
     default: {
       return {
         ...state,
