@@ -2,7 +2,7 @@ import { ActionTypes, OptionActionKind } from '../reducers/scoreReducerTypes';
 
 /* Monkfish beats Seaweed
 Seaweed beats Fishing net
-Fishing net beats Monkfish */
+Fishing net beats Monkfish MS */
 
 export const checkWinner = (
   dispatch: React.Dispatch<ActionTypes>,
