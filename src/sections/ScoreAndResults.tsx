@@ -69,8 +69,12 @@ const ScoreAndResults = () => {
               {time}
             </p>
           )}
-          {!runTimer && winner && <p>{winner} wins!</p>}
-          {!runTimer && winner && <p>{message}</p>}
+          {!runTimer && winner && (
+            <p className={styles.resultWinner}>{winner} wins!</p>
+          )}
+          {!runTimer && winner && (
+            <p className={styles.resultMessage}>{message}</p>
+          )}
         </div>
         <div className={styles.computerHand}>
           {!runTimer && winner && (
