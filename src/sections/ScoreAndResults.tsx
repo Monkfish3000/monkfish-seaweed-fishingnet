@@ -21,6 +21,8 @@ const ScoreAndResults = () => {
   const computerSeaItemIcon = optionsContext.options[computerSeaItemIndex].icon;
   const computerScore = optionsContext.state.score.computerScore;
 
+  const { winner } = optionsContext.state.results;
+
   useEffect(() => {
     if (runTimer) {
       const newIntervalId = setInterval(() => {
@@ -53,7 +55,14 @@ const ScoreAndResults = () => {
         </div>
       </div>
       <div className={styles.result}>
-        <div className={styles.playerHand}></div>
+        <div className={styles.playerHand}>
+          {!runTimer && winner && (
+            <>
+              <div>{playerSeaItemIcon}</div>
+              <div>{playerSeaItemName}</div>
+            </>
+          )}
+        </div>
         <div className={styles.midCol}>
           {runTimer && (
             <p data-testid="timer" className={styles.timer}>
