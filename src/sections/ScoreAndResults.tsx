@@ -21,7 +21,7 @@ const ScoreAndResults = () => {
   const computerSeaItemIcon = optionsContext.options[computerSeaItemIndex].icon;
   const computerScore = optionsContext.state.score.computerScore;
 
-  const { winner } = optionsContext.state.results;
+  const { winner, message } = optionsContext.state.results;
 
   useEffect(() => {
     if (runTimer) {
@@ -70,7 +70,14 @@ const ScoreAndResults = () => {
             </p>
           )}
         </div>
-        <div className={styles.computerHand}></div>
+        <div className={styles.computerHand}>
+          {!runTimer && winner && (
+            <>
+              <div>{computerSeaItemIcon}</div>
+              <div>{computerSeaItemName}</div>
+            </>
+          )}
+        </div>
       </div>
     </>
   );
