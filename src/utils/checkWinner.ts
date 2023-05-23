@@ -11,20 +11,20 @@ export const checkWinner = (
 ) => {
   // ALL POSSIBLE DRAW COMBINATIONS
   if (playerSeaItem === 'monkfish' && computerSeaItem === 'monkfish') {
-    dispatch({ type: OptionActionKind.DRAW, payload: 'It is a draw!' });
+    dispatch({ type: OptionActionKind.DRAW, payload: "It's a draw!" });
   } else if (playerSeaItem === 'seaweed' && computerSeaItem === 'seaweed') {
-    dispatch({ type: OptionActionKind.DRAW, payload: 'It is a draw!' });
+    dispatch({ type: OptionActionKind.DRAW, payload: "It's a draw!" });
   } else if (
     playerSeaItem === 'fishingnet' &&
     computerSeaItem === 'fishingnet'
   ) {
-    dispatch({ type: OptionActionKind.DRAW, payload: 'It is a draw!' });
+    dispatch({ type: OptionActionKind.DRAW, payload: "It's a draw!" });
 
     // PLAYER CHOOSES MONKFISH
   } else if (playerSeaItem === 'monkfish' && computerSeaItem === 'fishingnet') {
     dispatch({
       type: OptionActionKind.COMPUTER_WINS,
-      payload: 'Computer wins! The fishing net beats Monkfish! 😣',
+      payload: 'Computer wins! The fishing net catches Monkfish! 😣',
     });
   } else if (playerSeaItem === 'monkfish' && computerSeaItem === 'seaweed') {
     dispatch({
@@ -36,7 +36,7 @@ export const checkWinner = (
   } else if (playerSeaItem === 'seaweed' && computerSeaItem === 'fishingnet') {
     dispatch({
       type: OptionActionKind.PLAYER_WINS,
-      payload: 'You win! Seaweed beats the fishing net! 😆',
+      payload: 'You win! Seaweed tangles up the fishing net! 😆',
     });
   } else if (playerSeaItem === 'seaweed' && computerSeaItem === 'monkfish') {
     dispatch({
@@ -53,7 +53,7 @@ export const checkWinner = (
   } else if (playerSeaItem === 'fishingnet' && computerSeaItem === 'seaweed') {
     dispatch({
       type: OptionActionKind.COMPUTER_WINS,
-      payload: 'Computer wins! Seaweed tangles the fishing net! 😣',
+      payload: 'Computer wins! Seaweed tangles up the fishing net! 😣',
     });
   }
 };
