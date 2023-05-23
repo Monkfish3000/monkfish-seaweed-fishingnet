@@ -1,10 +1,19 @@
 .container {
   width: 800px;
+  position: relative;
 }
 
 .titleCtn {
   background-color: #f5f5dc;
   border-radius: 5px;
   padding: 20px 0;
-  margin-bottom: 50px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+img {
+  height: auto;
+  width: 100%;
 }
