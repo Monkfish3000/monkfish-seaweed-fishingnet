@@ -112,4 +112,18 @@ describe('scoreReducer', () => {
     expect(screen.getByText(/winner: Nobody/i));
     expect(screen.getByText(/message: It's a draw!/i));
   });
+
+  it('should update the scoreReducer with the default case', () => {
+    render(
+      <TestingComponent
+        myaction={{
+          type: OptionActionKind.FAKE,
+          payload: "It's a draw!",
+        }}
+      />
+    );
+
+    expect(screen.getByText(/winner: Error/i));
+    expect(screen.getByText(/Something went wrong!/i));
+  });
 });

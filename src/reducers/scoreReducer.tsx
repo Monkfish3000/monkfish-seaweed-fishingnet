@@ -60,7 +60,7 @@ export default function scoreReducer(
         ...state,
         results: {
           winner: 'error',
-          message: 'Something went wrong! ',
+          message: 'Something went wrong!',
         },
       };
     }
