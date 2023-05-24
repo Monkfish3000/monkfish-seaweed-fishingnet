@@ -11,9 +11,18 @@ import { GiFishMonster, GiFishingNet, GiPlantRoots } from 'react-icons/gi';
 import scoreReducer from '../reducers/scoreReducer';
 
 const options: IOptions[] = [
-  { name: SeaItemOption.monkfish, icon: <GiFishMonster size={60} /> },
-  { name: SeaItemOption.seaweed, icon: <GiPlantRoots size={60} /> },
-  { name: SeaItemOption.fishingnet, icon: <GiFishingNet size={60} /> },
+  {
+    name: SeaItemOption.monkfish,
+    icon: <GiFishMonster size={60} data-testid="monkfish" />,
+  },
+  {
+    name: SeaItemOption.seaweed,
+    icon: <GiPlantRoots size={60} data-testid="seaweed" />,
+  },
+  {
+    name: SeaItemOption.fishingnet,
+    icon: <GiFishingNet size={60} data-testid="fishingnet" />,
+  },
 ];
 
 const OptionsContext = createContext<IoptionsContext>({
