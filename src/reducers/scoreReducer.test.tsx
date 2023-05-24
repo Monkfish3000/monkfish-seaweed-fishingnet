@@ -36,6 +36,8 @@ const TestingComponent = (props: Iprops) => {
 
   return (
     <>
+      <p>winner: {state.results.winner}</p>
+      <p>message: {state.results.message}</p>
       <p>playerseaitem: {state.playerSeaItem}</p>
       <p>computerseaitem: {state.computerSeaItem}</p>
     </>
@@ -61,5 +63,67 @@ describe('scoreReducer', () => {
     );
 
     expect(screen.getByText(/computerseaitem: 1/)).toBeInTheDocument();
+  });
+
+  it('should update the scoreReducer with the Player wins', () => {
+    render(
+      <TestingComponent
+        myaction={{
+          type: OptionActionKind.PLAYER_WINS,
+          payload: 'You win! Monkfish eats the seaweed! 😆',
+        }}
+      />
+    );
+
+    expect(screen.getByText(/winner: Player/i));
+    expect(
+      screen.getByText(/message: You win! Monkfish eats the seaweed! 😆/i)
+    );
+  });
+
+  it('should update the scoreReducer with the Computer wins', () => {
+    render(
+      <TestingComponent
+        myaction={{
+          type: OptionActionKind.COMPUTER_WINS,
+          payload: 'Computer wins! The fishing net catches Monkfish! 😣',
+        }}
+      />
+    );
+
+    expect(screen.getByText(/winner: Computer/i));
+    expect(
+      screen.getByText(
+        /message: Computer wins! The fishing net catches Monkfish! 😣/i
+      )
+    );
+  });
+
+  it('should update the scoreReducer if there is a draw', () => {
+    render(
+      <TestingComponent
+        myaction={{
+          type: OptionActionKind.DRAW,
+          payload: "It's a draw!",
+        }}
+      />
+    );
+
+    expect(screen.getByText(/winner: Nobody/i));
+    expect(screen.getByText(/message: It's a draw!/i));
+  });
+
+  it('should update the scoreReducer with the default case', () => {
+    render(
+      <TestingComponent
+        myaction={{
+          type: OptionActionKind.FAKE,
+          payload: "It's a draw!",
+        }}
+      />
+    );
+
+    expect(screen.getByText(/winner: Error/i));
+    expect(screen.getByText(/Something went wrong!/i));
   });
 });
