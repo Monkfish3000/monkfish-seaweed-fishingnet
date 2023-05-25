@@ -9,7 +9,7 @@ const ScoreAndResults = () => {
 
   const optionsContext = useOptions();
   const { runTimer } = optionsContext.state;
-  const { dispatch } = optionsContext;
+  const { dispatch, options } = optionsContext;
 
   const playerSeaItemIndex = optionsContext.state.playerSeaItem;
   const playerSeaItemName = optionsContext.options[playerSeaItemIndex].name;
@@ -56,6 +56,9 @@ const ScoreAndResults = () => {
       </div>
       <div className={styles.result}>
         <div className={styles.playerHand}>
+          {runTimer && (
+            <div className={styles.playerShake}>{options[0].icon}</div>
+          )}
           {!runTimer && winner && (
             <>
               <div>{playerSeaItemIcon}</div>
@@ -77,6 +80,9 @@ const ScoreAndResults = () => {
           )}
         </div>
         <div className={styles.computerHand}>
+          {runTimer && (
+            <div className={styles.computerShake}>{options[0].icon}</div>
+          )}
           {!runTimer && winner && (
             <>
               <div>{computerSeaItemIcon}</div>
