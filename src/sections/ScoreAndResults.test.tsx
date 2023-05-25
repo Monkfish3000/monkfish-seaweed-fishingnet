@@ -82,7 +82,7 @@ describe('Score and results', () => {
     expect(screen.getByTestId('timer')).toHaveTextContent('2');
   });
 
-  it('should display correct winner message on the page ', () => {
+  it('should display Player winner message on the page', () => {
     vi.useFakeTimers();
     render(
       <OptionsProvider>
@@ -115,5 +115,73 @@ describe('Score and results', () => {
     expect(screen.getAllByTestId(/fishingnet/i)[0]).toBeVisible();
 
     expect(screen.getAllByTestId(/monkfish/i)).toHaveLength(2);
+  });
+
+  it('should display Computer winner message on the page', () => {
+    vi.useFakeTimers();
+    render(
+      <OptionsProvider>
+        <ScoreAndResults />
+        <ChooseAndPlay />
+      </OptionsProvider>
+    );
+
+    const seaItem = screen.getByText(/seaweed/i);
+    expect(seaItem).toBeInTheDocument();
+
+    fireEvent.click(seaItem);
+    fireEvent.click(screen.getByText('Play'));
+
+    act(() => {
+      vi.advanceTimersByTime(3000);
+    });
+
+    screen.debug();
+
+    expect(screen.getAllByText(/Computer Wins!/i)[0]).toBeInTheDocument();
+    expect(
+      screen.getByText(/Computer wins! Monkfish eats the seaweed! 😣/i)
+    ).toBeInTheDocument();
+
+    expect(screen.getByText(/Player: 0/i)).toBeInTheDocument();
+    expect(screen.getByText(/Computer: 1/i)).toBeInTheDocument();
+
+    expect(screen.getAllByTestId(/monkfish/i)[0]).toBeVisible();
+    expect(screen.getAllByTestId(/seaweed/i)[0]).toBeVisible();
+
+    expect(screen.getAllByTestId(/monkfish/i)).toHaveLength(2);
+  });
+
+  it('should display the draw message on the page', () => {
+    vi.useFakeTimers();
+    render(
+      <OptionsProvider>
+        <ScoreAndResults />
+        <ChooseAndPlay />
+      </OptionsProvider>
+    );
+
+    const seaItem = screen.getByText(/monkfish/i);
+    expect(seaItem).toBeInTheDocument();
+
+    fireEvent.click(seaItem);
+    fireEvent.click(screen.getByText('Play'));
+
+    act(() => {
+      vi.advanceTimersByTime(3000);
+    });
+
+    screen.debug();
+
+    expect(screen.getByText(/Nobody/i)).toBeInTheDocument();
+    expect(screen.getByText(/It's a draw!/i)).toBeInTheDocument();
+
+    expect(screen.getByText(/Player: 0/i)).toBeInTheDocument();
+    expect(screen.getByText(/Computer: 0/i)).toBeInTheDocument();
+
+    expect(screen.getAllByTestId(/monkfish/i)[0]).toBeVisible();
+    expect(screen.getAllByTestId(/monkfish/i)[0]).toBeVisible();
+
+    expect(screen.getAllByTestId(/monkfish/i)).toHaveLength(3);
   });
 });
