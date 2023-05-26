@@ -72,7 +72,7 @@
 @keyframes playerShakeAnimation {
   0%,
   100% {
-    transform: rotate(-100deg);
+    transform: rotate(-50deg);
   }
   50% {
     transform: rotate(-80deg);
@@ -82,10 +82,10 @@
 @keyframes computerShakeAnimation {
   0%,
   100% {
-    transform: scaleY(-1) rotate(80deg);
+    transform: rotate(80deg);
   }
   50% {
-    transform: scaleY(-1) rotate(100deg);
+    transform: rotate(50deg);
   }
 }
 
