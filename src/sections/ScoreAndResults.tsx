@@ -44,59 +44,61 @@ const ScoreAndResults = () => {
 
   return (
     <>
-      <div className={styles.scoreCtn}>
-        <div className={styles.score}>
-          <h3>Score</h3>
-          <p>Player: {playerScore}</p>
+      <div className={styles.container}>
+        <div className={styles.scoreCtn}>
+          <div className={styles.score}>
+            <h3>Score</h3>
+            <p>Player: {playerScore}</p>
+          </div>
+          <div className={styles.score}>
+            <h3>Score</h3>
+            <p>Computer: {computerScore}</p>
+          </div>
         </div>
-        <div className={styles.score}>
-          <h3>Score</h3>
-          <p>Computer: {computerScore}</p>
-        </div>
-      </div>
-      <div className={styles.result}>
-        <div
-          className={`${styles.playerHand} ${
-            winner === 'Player' ? styles.winnerAnimation : ''
-          }`}
-        >
-          {runTimer && (
-            <div className={styles.playerShake}>{options[0].icon}</div>
-          )}
-          {!runTimer && winner && (
-            <>
-              <div>{playerSeaItemIcon}</div>
-              <div>{playerSeaItemName}</div>
-            </>
-          )}
-        </div>
-        <div className={styles.midCol}>
-          {runTimer && (
-            <p data-testid="timer" className={styles.timer}>
-              {time}
-            </p>
-          )}
-          {!runTimer && winner && (
-            <p className={styles.resultWinner}>{winner} wins!</p>
-          )}
-          {!runTimer && winner && (
-            <p className={styles.resultMessage}>{message}</p>
-          )}
-        </div>
-        <div
-          className={`${styles.computerHand} ${
-            winner === 'Computer' ? styles.winnerAnimation : ''
-          }`}
-        >
-          {runTimer && (
-            <div className={styles.computerShake}>{options[0].icon}</div>
-          )}
-          {!runTimer && winner && (
-            <>
-              <div>{computerSeaItemIcon}</div>
-              <div>{computerSeaItemName}</div>
-            </>
-          )}
+        <div className={styles.result}>
+          <div
+            className={`${styles.playerHand} ${
+              winner === 'Player' ? styles.winnerAnimation : ''
+            }`}
+          >
+            {runTimer && (
+              <div className={styles.playerShake}>{options[0].icon}</div>
+            )}
+            {!runTimer && winner && (
+              <>
+                <div>{playerSeaItemIcon}</div>
+                <div>{playerSeaItemName}</div>
+              </>
+            )}
+          </div>
+          <div className={styles.midCol}>
+            {runTimer && (
+              <p data-testid="timer" className={styles.timer}>
+                {time}
+              </p>
+            )}
+            {!runTimer && winner && (
+              <p className={styles.resultWinner}>{winner} wins!</p>
+            )}
+            {!runTimer && winner && (
+              <p className={styles.resultMessage}>{message}</p>
+            )}
+          </div>
+          <div
+            className={`${styles.computerHand} ${
+              winner === 'Computer' ? styles.winnerAnimation : ''
+            }`}
+          >
+            {runTimer && (
+              <div className={styles.computerShake}>{options[0].icon}</div>
+            )}
+            {!runTimer && winner && (
+              <>
+                <div>{computerSeaItemIcon}</div>
+                <div>{computerSeaItemName}</div>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </>
