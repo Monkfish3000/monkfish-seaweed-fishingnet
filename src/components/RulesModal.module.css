@@ -1,17 +1,19 @@
+.modal-container {
+  position: relative;
+  z-index: 9999;
+}
+
 .rules-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100;
   background-color: rgba(0, 0, 0, 0.5);
   transition: opacity 0.3s ease-in-out;
   opacity: 0;
   pointer-events: none;
+  z-index: 9999;
 }
 
 .rules-modal.closing {
@@ -24,11 +26,14 @@
 }
 
 .rules-modal-overlay {
-  position: absolute;
+  position: fixed;
+  height: 100vh;
+  background: rgba(49, 49, 49, 0.8);
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
 }
 
 .rules-modal-content {
