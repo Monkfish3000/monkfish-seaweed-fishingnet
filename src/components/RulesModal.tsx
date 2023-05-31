@@ -49,14 +49,20 @@ function RulesModal() {
     setIsModalOpen(false);
   }
 
-  return (
-    <div>
+  function Button() {
+    return (
       <button className={styles['close-button']} onClick={handleModalOpen}>
         Rules
       </button>
+    );
+  }
+
+  return (
+    <div>
+      <Button />
       <Modal isOpen={isModalOpen} onClose={handleModalClose}>
         <h2>Modal Title</h2>
-        <p>This is the modal content.</p>
+        <p>This is the modal content</p>
         <button onClick={handleModalClose}>Close</button>
       </Modal>
     </div>
