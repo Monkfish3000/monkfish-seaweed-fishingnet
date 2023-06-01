@@ -184,4 +184,66 @@ describe('Score and results', () => {
 
     expect(screen.getAllByTestId(/monkfish/i)).toHaveLength(3);
   });
+
+  it('should display the player and computer sea item shake when playing game', () => {
+    vi.useFakeTimers();
+
+    render(
+      <OptionsProvider>
+        <ScoreAndResults />
+        <ChooseAndPlay />
+      </OptionsProvider>
+    );
+
+    const playerSeaItemShake = screen.queryByTestId('playerShake');
+    const computerSeaItemShake = screen.queryByTestId('computerShake');
+
+    expect(playerSeaItemShake).not.toBeInTheDocument();
+    expect(computerSeaItemShake).not.toBeInTheDocument();
+
+    const seaItem = screen.getByText(/monkfish/i);
+
+    fireEvent.click(seaItem);
+    fireEvent.click(screen.getByText('Play'));
+
+    act(() => {
+      vi.advanceTimersByTime(2000);
+    });
+
+    screen.debug();
+
+    expect(screen.queryByTestId('playerShake')).toBeInTheDocument();
+    expect(screen.queryByTestId('computerShake')).toBeInTheDocument();
+  });
+
+  it('should display the winner animation', () => {
+    vi.useFakeTimers();
+
+    render(
+      <OptionsProvider>
+        <ScoreAndResults />
+        <ChooseAndPlay />
+      </OptionsProvider>
+    );
+
+    const playerSeaItemShake = screen.queryByTestId('playerShake');
+    const computerSeaItemShake = screen.queryByTestId('computerShake');
+
+    expect(playerSeaItemShake).not.toBeInTheDocument();
+    expect(computerSeaItemShake).not.toBeInTheDocument();
+
+    const seaItem = screen.getByText(/monkfish/i);
+
+    fireEvent.click(seaItem);
+    fireEvent.click(screen.getByText('Play'));
+
+    act(() => {
+      vi.advanceTimersByTime(2000);
+    });
+
+    screen.debug();
+
+    expect(screen.queryByTestId('playerShake')).toBeInTheDocument();
+    expect(screen.queryByTestId('computerShake')).toBeInTheDocument();
+  });
 });
