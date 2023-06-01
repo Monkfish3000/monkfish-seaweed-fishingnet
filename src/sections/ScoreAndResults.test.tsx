@@ -224,7 +224,7 @@ describe('Score and results', () => {
     expect(screen.queryByTestId('computerShake')).toBeInTheDocument();
   });
 
-  it('should display the winner animation', () => {
+  it('should display the Player winner animation', () => {
     vi.useFakeTimers();
 
     render(
@@ -244,6 +244,30 @@ describe('Score and results', () => {
     });
 
     expect(screen.getByTestId('playerResult')).toHaveClass('winnerAnimation');
+
+    screen.debug();
+  });
+
+  it('should display the Computer winner animation', () => {
+    vi.useFakeTimers();
+
+    render(
+      <OptionsProvider>
+        <ScoreAndResults />
+        <ChooseAndPlay />
+      </OptionsProvider>
+    );
+
+    const seaItem = screen.getByText(/seaweed/i);
+
+    fireEvent.click(seaItem);
+    fireEvent.click(screen.getByText('Play'));
+
+    act(() => {
+      vi.advanceTimersByTime(3000);
+    });
+
+    expect(screen.getByTestId('computerResult')).toHaveClass('winnerAnimation');
 
     screen.debug();
   });
