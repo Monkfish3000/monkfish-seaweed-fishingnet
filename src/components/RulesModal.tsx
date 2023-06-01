@@ -1,4 +1,4 @@
-import { useState, ReactNode } from 'react';
+import { useState, ReactNode, useRef, useEffect } from 'react';
 import styles from './RulesModal.module.css';
 
 interface ModalProps {
@@ -9,11 +9,34 @@ interface ModalProps {
 
 function Modal({ isOpen, onClose, children }: ModalProps) {
   const [isClosing, setIsClosing] = useState(false);
+  const modalContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        modalContainerRef.current &&
+        !modalContainerRef.current.contains(event.target as Node)
+      ) {
+        handleModalClose();
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen]);
 
   function handleModalClose() {
     setIsClosing(true);
     setTimeout(() => {
       onClose();
+      setIsClosing(false);
     }, 300);
   }
 
@@ -27,6 +50,7 @@ function Modal({ isOpen, onClose, children }: ModalProps) {
         className={`${styles['rules']} ${isOpen ? styles.open : ''}${
           isClosing ? ' ' + styles.closing : ''
         }`}
+        ref={modalContainerRef}
       >
         <div
           className={styles['rules-modal-overlay']}
@@ -49,13 +73,13 @@ function RulesModal() {
     setIsModalOpen(false);
   }
 
-  function Button() {
+  const Button = () => {
     return (
       <button className={styles['close-button']} onClick={handleModalOpen}>
         Rules
       </button>
     );
-  }
+  };
 
   return (
     <div>
