@@ -9,6 +9,14 @@ vi.mock('../utils/randomNumber', () => ({
   generateComputerSeaItem: () => 0,
 }));
 
+vi.mock('./ScoreAndResults.module.css', () => {
+  return {
+    default: {
+      winnerAnimation: 'winnerAnimation',
+    },
+  };
+});
+
 describe('Score and results', () => {
   it('should display 2 seconds on the screen after we wait one second after ', () => {
     vi.useFakeTimers();
@@ -226,24 +234,17 @@ describe('Score and results', () => {
       </OptionsProvider>
     );
 
-    const playerSeaItemShake = screen.queryByTestId('playerShake');
-    const computerSeaItemShake = screen.queryByTestId('computerShake');
-
-    expect(playerSeaItemShake).not.toBeInTheDocument();
-    expect(computerSeaItemShake).not.toBeInTheDocument();
-
-    const seaItem = screen.getByText(/monkfish/i);
+    const seaItem = screen.getByText(/fishingnet/i);
 
     fireEvent.click(seaItem);
     fireEvent.click(screen.getByText('Play'));
 
     act(() => {
-      vi.advanceTimersByTime(2000);
+      vi.advanceTimersByTime(3000);
     });
 
-    screen.debug();
+    expect(screen.getByTestId('playerResult')).toHaveClass('winnerAnimation');
 
-    expect(screen.queryByTestId('playerShake')).toBeInTheDocument();
-    expect(screen.queryByTestId('computerShake')).toBeInTheDocument();
+    screen.debug();
   });
 });
