@@ -45,20 +45,17 @@ function Modal({ isOpen, onClose, children }: ModalProps) {
   }
 
   return (
-    <div className={styles['modal-container']}>
+    <>
       <div
-        className={`${styles['rules']} ${isOpen ? styles.open : ''}${
-          isClosing ? ' ' + styles.closing : ''
-        }`}
+        className={`${styles['rules-modal-overlay']} ${
+          isOpen ? styles.open : ''
+        }${isClosing ? ' ' + styles.closing : ''}`}
         ref={modalContainerRef}
+        onClick={handleModalClose}
       >
-        <div
-          className={styles['rules-modal-overlay']}
-          onClick={handleModalClose}
-        />
         <div className={styles['rules-modal-content']}>{children}</div>
       </div>
-    </div>
+    </>
   );
 }
 
@@ -75,7 +72,7 @@ function RulesModal() {
 
   const Button = () => {
     return (
-      <button className={styles['close-button']} onClick={handleModalOpen}>
+      <button className={styles['open-btn']} onClick={handleModalOpen}>
         Rules
       </button>
     );
