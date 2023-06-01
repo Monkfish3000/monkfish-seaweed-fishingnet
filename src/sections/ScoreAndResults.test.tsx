@@ -9,6 +9,14 @@ vi.mock('../utils/randomNumber', () => ({
   generateComputerSeaItem: () => 0,
 }));
 
+vi.mock('./ScoreAndResults.module.css', () => {
+  return {
+    default: {
+      winnerAnimation: 'winnerAnimation',
+    },
+  };
+});
+
 describe('Score and results', () => {
   it('should display 2 seconds on the screen after we wait one second after ', () => {
     vi.useFakeTimers();
@@ -183,5 +191,84 @@ describe('Score and results', () => {
     expect(screen.getAllByTestId(/monkfish/i)[0]).toBeVisible();
 
     expect(screen.getAllByTestId(/monkfish/i)).toHaveLength(3);
+  });
+
+  it('should display the player and computer sea item shake when playing game', () => {
+    vi.useFakeTimers();
+
+    render(
+      <OptionsProvider>
+        <ScoreAndResults />
+        <ChooseAndPlay />
+      </OptionsProvider>
+    );
+
+    const playerSeaItemShake = screen.queryByTestId('playerShake');
+    const computerSeaItemShake = screen.queryByTestId('computerShake');
+
+    expect(playerSeaItemShake).not.toBeInTheDocument();
+    expect(computerSeaItemShake).not.toBeInTheDocument();
+
+    const seaItem = screen.getByText(/monkfish/i);
+
+    fireEvent.click(seaItem);
+    fireEvent.click(screen.getByText('Play'));
+
+    act(() => {
+      vi.advanceTimersByTime(2000);
+    });
+
+    screen.debug();
+
+    expect(screen.queryByTestId('playerShake')).toBeInTheDocument();
+    expect(screen.queryByTestId('computerShake')).toBeInTheDocument();
+  });
+
+  it('should display the Player winner animation', () => {
+    vi.useFakeTimers();
+
+    render(
+      <OptionsProvider>
+        <ScoreAndResults />
+        <ChooseAndPlay />
+      </OptionsProvider>
+    );
+
+    const seaItem = screen.getByText(/fishingnet/i);
+
+    fireEvent.click(seaItem);
+    fireEvent.click(screen.getByText('Play'));
+
+    act(() => {
+      vi.advanceTimersByTime(3000);
+    });
+
+    expect(screen.getByTestId('playerResult')).toHaveClass('winnerAnimation');
+
+    screen.debug();
+  });
+
+  it('should display the Computer winner animation', () => {
+    vi.useFakeTimers();
+
+    render(
+      <OptionsProvider>
+        <ScoreAndResults />
+        <ChooseAndPlay />
+      </OptionsProvider>
+    );
+
+    const seaItem = screen.getByText(/seaweed/i);
+
+    fireEvent.click(seaItem);
+    fireEvent.click(screen.getByText('Play'));
+
+    act(() => {
+      vi.advanceTimersByTime(3000);
+    });
+
+    expect(screen.getByTestId('computerResult')).toHaveClass('winnerAnimation');
+
+    screen.debug();
   });
 });
