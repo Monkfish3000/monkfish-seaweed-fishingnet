@@ -24,7 +24,7 @@ function Modal({ isOpen, onClose, children }: ModalProps) {
   return (
     <div className={styles['modal-container']}>
       <div
-        className={`${styles['rules-modal']} ${isOpen ? styles.open : ''}${
+        className={`${styles['rules']} ${isOpen ? styles.open : ''}${
           isClosing ? ' ' + styles.closing : ''
         }`}
       >
