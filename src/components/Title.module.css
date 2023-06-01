@@ -1,11 +1,11 @@
 .container {
-  width: 800px;
+  width: 80%;
   position: relative;
+  margin: auto;
 }
 
 .titleCtn {
   background-color: #f5f5dc;
-  border-radius: 5px;
   padding: 20px 0;
   position: absolute;
   bottom: 0;
@@ -14,6 +14,7 @@
 }
 
 img {
-  height: auto;
   width: 100%;
+  height: auto;
+  border-radius: 0 0 10% 10%;
 }

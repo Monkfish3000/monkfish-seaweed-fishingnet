@@ -1,6 +1,12 @@
+.container {
+  width: 80%;
+  margin: auto;
+}
+
 .scoreCtn {
   display: flex;
   justify-content: space-between;
+  margin-top: 36px;
 }
 
 .scoreCtn h3 {

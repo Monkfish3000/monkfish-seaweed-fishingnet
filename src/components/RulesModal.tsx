@@ -22,16 +22,18 @@ function Modal({ isOpen, onClose, children }: ModalProps) {
   }
 
   return (
-    <div
-      className={`${styles['rules-modal open']}${
-        isClosing ? ' ' + styles.closing : ''
-      }`}
-    >
+    <div className={styles['modal-container']}>
       <div
-        className={styles['rules-modal-overlay']}
-        onClick={handleModalClose}
-      />
-      <div className={styles['rules-modal-content']}>{children}</div>
+        className={`${styles['rules-modal']} ${isOpen ? styles.open : ''}${
+          isClosing ? ' ' + styles.closing : ''
+        }`}
+      >
+        <div
+          className={styles['rules-modal-overlay']}
+          onClick={handleModalClose}
+        />
+        <div className={styles['rules-modal-content']}>{children}</div>
+      </div>
     </div>
   );
 }
@@ -47,14 +49,20 @@ function RulesModal() {
     setIsModalOpen(false);
   }
 
-  return (
-    <div style={{ display: 'inline' }}>
+  function Button() {
+    return (
       <button className={styles['close-button']} onClick={handleModalOpen}>
         Rules
       </button>
+    );
+  }
+
+  return (
+    <div>
+      <Button />
       <Modal isOpen={isModalOpen} onClose={handleModalClose}>
         <h2>Modal Title</h2>
-        <p>This is the modal content.</p>
+        <p>This is the modal content</p>
         <button onClick={handleModalClose}>Close</button>
       </Modal>
     </div>
