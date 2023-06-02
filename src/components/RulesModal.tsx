@@ -82,8 +82,16 @@ function RulesModal() {
     <div>
       <Button />
       <Modal isOpen={isModalOpen} onClose={handleModalClose}>
-        <h2>Modal Title</h2>
-        <p>This is the modal content</p>
+        <h1>Monkfish, Seaweed, Fishing Net</h1>
+        <h2>The rules are simple: </h2>
+        <p>
+          Choose which item of the sea you want to play. Hit the play button and
+          wait for the computer to choose their item.
+        </p>
+        <p>
+          || Monkfish beats Seaweed! Seaweed beats Fishing net! Fishing net
+          beats Monkfish! ||
+        </p>
         <button onClick={handleModalClose}>Close</button>
       </Modal>
     </div>
