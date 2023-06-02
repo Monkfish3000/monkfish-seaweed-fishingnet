@@ -1,13 +1,22 @@
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  align-items: baseline;
+}
+
 .choiceBtnCtn {
   display: flex;
   justify-content: center;
   gap: 50px;
+  align-items: flex-start;
 }
 
 .playBtn {
+  display: inline-block;
   color: #fff;
   background-color: #181848;
   padding: 10px 30px;
-  margin-top: 50px;
   font-weight: bold;
+  margin-top: 50px;
 }
