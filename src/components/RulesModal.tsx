@@ -89,8 +89,8 @@ function RulesModal() {
           wait for the computer to choose their item.
         </p>
         <p>
-          || Monkfish beats Seaweed! Seaweed beats Fishing net! Fishing net
-          beats Monkfish! ||
+          🐡🐡🐡 Monkfish beats Seaweed! 🌿🌿🌿 Seaweed beats Fishing net! 🎣 🎣
+          🎣 Fishing net beats Monkfish!
         </p>
         <button onClick={handleModalClose}>Close</button>
       </Modal>
