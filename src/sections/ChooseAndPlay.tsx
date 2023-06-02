@@ -3,6 +3,7 @@ import SeaItem from '../components/SeaItem';
 import { useOptions } from '../context/optionsContext';
 import { generateComputerSeaItem } from '../utils/randomNumber';
 import { OptionActionKind } from '../reducers/scoreReducerTypes';
+import RulesModal from '../components/RulesModal';
 
 const ChooseAndPlay = () => {
   const optionsContext = useOptions();
@@ -29,9 +30,12 @@ const ChooseAndPlay = () => {
   return (
     <>
       <div className={styles.choiceBtnCtn}>{SeaItemsArray}</div>
-      <button className={styles.playBtn} onClick={play}>
-        Play
-      </button>
+      <div className={styles.btnContainer}>
+        <button className={styles.playBtn} onClick={play}>
+          Play
+        </button>
+        <RulesModal />
+      </div>
     </>
   );
 };
