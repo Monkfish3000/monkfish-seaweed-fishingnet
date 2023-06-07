@@ -18,3 +18,35 @@ img {
   height: auto;
   border-radius: 0 0 10% 10%;
 }
+
+.container {
+  width: 80%;
+  position: relative;
+  margin: auto;
+}
+
+.titleCtn {
+  background-color: #f5f5dc;
+  padding: 20px 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 0 0 10% 10%;
+}
+
+/* Media Query for Mobile Devices */
+@media only screen and (max-width: 767px) {
+  .container {
+    width: 100%;
+  }
+
+  img {
+    display: none;
+  }
+}
