@@ -35,3 +35,9 @@
 .open-button {
   margin: 20px;
 }
+
+@media only screen and (max-width: 844px) {
+  .rules-modal-content {
+    width: 95%;
+  }
+}
