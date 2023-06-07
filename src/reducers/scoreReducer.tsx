@@ -12,6 +12,10 @@ export default function scoreReducer(
       return {
         ...state,
         playerSeaItem: payload,
+        results: {
+          winner: '',
+          message: '',
+        },
       };
     case OptionActionKind.UPDATE_COMPUTER_CHOICE:
       return {
