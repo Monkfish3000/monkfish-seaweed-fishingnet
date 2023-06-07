@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 :root {
   font-family: 'Happy Monkey', cursive;
   line-height: 1.5;
@@ -25,6 +29,7 @@ a:hover {
 
 body {
   margin: 0;
+  padding: 0;
   display: flex;
   place-items: center;
   min-width: 320px;
@@ -66,5 +71,25 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+
+/* Media Queries for Mobile Devices */
+@media only screen and (max-width: 844px) {
+  body {
+    display: block;
+  }
+
+  #root {
+    margin: 0;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  button {
+    padding: 0.5em 1em;
+    font-size: 0.9em;
   }
 }
