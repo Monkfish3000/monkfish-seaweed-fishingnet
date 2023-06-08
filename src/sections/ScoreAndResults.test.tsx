@@ -268,7 +268,39 @@ describe('Score and results', () => {
     });
 
     expect(screen.getByTestId('computerResult')).toHaveClass('winnerAnimation');
+  });
 
-    screen.debug();
+  it('should display reset the previous winner message results', () => {
+    vi.useFakeTimers();
+
+    render(
+      <OptionsProvider>
+        <ScoreAndResults />
+        <ChooseAndPlay />
+      </OptionsProvider>
+    );
+
+    const seaItem = screen.getByText(/seaweed/i);
+
+    fireEvent.click(seaItem);
+    fireEvent.click(screen.getByText('Play'));
+
+    act(() => {
+      vi.advanceTimersByTime(3000);
+    });
+
+    expect(screen.getByTestId('computerResult')).toHaveClass('winnerAnimation');
+    expect(screen.getAllByText(/Computer Wins!/i)[0]).toBeInTheDocument();
+    expect(screen.getAllByTestId(/monkfish/i)[0]).toBeVisible();
+    expect(screen.getAllByTestId(/monkfish/i)).toHaveLength(2);
+
+    fireEvent.click(screen.getByText(/fishingnet/i));
+
+    expect(screen.getByTestId('computerResult')).not.toHaveClass(
+      'winnerAnimation'
+    );
+
+    expect(screen.queryByText(/Computer Wins!/i)).toBeNull();
+    expect(screen.getAllByTestId(/monkfish/i)).toHaveLength(1);
   });
 });
