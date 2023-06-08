@@ -270,7 +270,7 @@ describe('Score and results', () => {
     expect(screen.getByTestId('computerResult')).toHaveClass('winnerAnimation');
   });
 
-  it('should display reset the previous winner message results', () => {
+  it('should reset the previous winner message results', () => {
     vi.useFakeTimers();
 
     render(
