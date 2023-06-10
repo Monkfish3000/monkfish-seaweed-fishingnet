@@ -3,7 +3,6 @@ import { describe, vi, it } from 'vitest';
 import { OptionsProvider } from '../context/optionsContext';
 import ScoreAndResults from './ScoreAndResults';
 import ChooseAndPlay from './ChooseAndPlay';
-import { generateComputerSeaItem } from '../utils/randomNumber';
 
 vi.mock('../utils/randomNumber', () => ({
   generateComputerSeaItem: () => 0,
