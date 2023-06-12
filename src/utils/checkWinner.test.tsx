@@ -53,6 +53,8 @@ describe('checkwinner', () => {
     expect(
       screen.getByText(/You win! Monkfish eats the seaweed! 😆/)
     ).toBeInTheDocument();
+    expect(screen.getByText(/playerscore: 3/i)).toBeInTheDocument();
+    expect(screen.getByText(/computerscore: 1/i)).toBeInTheDocument();
   });
 
   it('should update reduced with the Player wins - Seaweed tangles the fishing net', () => {
@@ -71,6 +73,8 @@ describe('checkwinner', () => {
     expect(
       screen.getByText(/Computer wins! The fishing net catches Monkfish! 😣/)
     ).toBeInTheDocument();
+    expect(screen.getByText(/playerscore: 2/i)).toBeInTheDocument();
+    expect(screen.getByText(/computerscore: 2/i)).toBeInTheDocument();
   });
 
   it('should update reduced with the Computer wins - Seaweed tangles the fishing net', () => {
@@ -79,6 +83,8 @@ describe('checkwinner', () => {
     expect(
       screen.getByText(/Computer wins! Seaweed tangles up the fishing net! 😣/)
     ).toBeInTheDocument();
+    expect(screen.getByText(/playerscore: 2/i)).toBeInTheDocument();
+    expect(screen.getByText(/computerscore: 2/i)).toBeInTheDocument();
   });
 
   // tests for draws
@@ -86,12 +92,16 @@ describe('checkwinner', () => {
     render(<TestingComponent playerHand="monkfish" computerHand="monkfish" />);
 
     expect(screen.getByText(/It's a draw!/)).toBeInTheDocument();
+    expect(screen.getByText(/playerscore: 2/i)).toBeInTheDocument();
+    expect(screen.getByText(/computerscore: 1/i)).toBeInTheDocument();
   });
 
   it('should update reduced with a draw', () => {
     render(<TestingComponent playerHand="seaweed" computerHand="seaweed" />);
 
     expect(screen.getByText(/It's a draw!/)).toBeInTheDocument();
+    expect(screen.getByText(/playerscore: 2/i)).toBeInTheDocument();
+    expect(screen.getByText(/computerscore: 1/i)).toBeInTheDocument();
   });
 
   it('should update reduced with a draw', () => {
@@ -100,5 +110,7 @@ describe('checkwinner', () => {
     );
 
     expect(screen.getByText(/It's a draw!/)).toBeInTheDocument();
+    expect(screen.getByText(/playerscore: 2/i)).toBeInTheDocument();
+    expect(screen.getByText(/computerscore: 1/i)).toBeInTheDocument();
   });
 });
