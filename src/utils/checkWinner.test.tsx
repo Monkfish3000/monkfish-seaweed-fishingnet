@@ -46,11 +46,59 @@ const TestingComponent = (props: Iprops) => {
 };
 
 describe('checkwinner', () => {
+  // tests for player winning
   it('should update reduced with the Player wins - Monkfish eats seaweed', () => {
     render(<TestingComponent playerHand="monkfish" computerHand="seaweed" />);
 
     expect(
       screen.getByText(/You win! Monkfish eats the seaweed! 😆/)
     ).toBeInTheDocument();
+  });
+
+  it('should update reduced with the Player wins - Seaweed tangles the fishing net', () => {
+    render(<TestingComponent playerHand="seaweed" computerHand="fishingnet" />);
+
+    expect(
+      screen.getByText(/You win! Seaweed tangles up the fishing net! 😆/)
+    ).toBeInTheDocument();
+  });
+  // tests for computer winning
+  it('should update reduced with the Computer wins - Seaweed tangles the fishing net', () => {
+    render(
+      <TestingComponent playerHand="monkfish" computerHand="fishingnet" />
+    );
+
+    expect(
+      screen.getByText(/Computer wins! The fishing net catches Monkfish! 😣/)
+    ).toBeInTheDocument();
+  });
+
+  it('should update reduced with the Computer wins - Seaweed tangles the fishing net', () => {
+    render(<TestingComponent playerHand="fishingnet" computerHand="seaweed" />);
+
+    expect(
+      screen.getByText(/Computer wins! Seaweed tangles up the fishing net! 😣/)
+    ).toBeInTheDocument();
+  });
+
+  // tests for draws
+  it('should update reduced with a draw', () => {
+    render(<TestingComponent playerHand="monkfish" computerHand="monkfish" />);
+
+    expect(screen.getByText(/It's a draw!/)).toBeInTheDocument();
+  });
+
+  it('should update reduced with a draw', () => {
+    render(<TestingComponent playerHand="seaweed" computerHand="seaweed" />);
+
+    expect(screen.getByText(/It's a draw!/)).toBeInTheDocument();
+  });
+
+  it('should update reduced with a draw', () => {
+    render(
+      <TestingComponent playerHand="fishingnet" computerHand="fishingnet" />
+    );
+
+    expect(screen.getByText(/It's a draw!/)).toBeInTheDocument();
   });
 });
