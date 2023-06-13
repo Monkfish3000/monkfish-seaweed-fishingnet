@@ -33,6 +33,7 @@ const TestingComponent = (props: Iprops) => {
 
   useEffect(() => {
     checkWinner(dispatch, props.playerHand, props.computerHand);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
