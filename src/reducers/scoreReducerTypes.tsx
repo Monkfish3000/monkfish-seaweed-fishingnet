@@ -5,6 +5,7 @@ export enum OptionActionKind {
   DRAW = 'DRAW',
   COMPUTER_WINS = 'COMPUTER_WINS',
   PLAYER_WINS = 'PLAYER_WINS',
+  FAKE = 'FAKE',
 }
 
 interface UpdatePlayerChoice {
@@ -37,10 +38,16 @@ interface ComputerWins {
   payload: string;
 }
 
+interface Fake {
+  type: OptionActionKind.FAKE;
+  payload: string;
+}
+
 export type ActionTypes =
   | UpdatePlayerChoice
   | UpdateComputerChoice
   | RunTimer
   | Draw
   | PlayerWins
-  | ComputerWins;
+  | ComputerWins
+  | Fake;
