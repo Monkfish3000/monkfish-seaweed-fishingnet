@@ -1,5 +1,4 @@
-import { render, screen, fireEvent, act } from '@testing-library/react';
-import { describe, vi, it } from 'vitest';
+import { describe, it } from 'vitest';
 
 describe('Rules Modal', () => {
   it('should render the rules modal when user clicks Rules button', () => {
